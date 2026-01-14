@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+.wrapper {
+  max-width: 1440px;   /* FHD 기준 */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif;
@@ -235,7 +243,8 @@ header {
 
 /* 인풋 */
 .search-form input {
-  width: 100%;       /* 전체 너비 차지 */
+  /* width: 100%;       전체 너비 차지 */
+  width: clamp(160px, 20vw, 220px);
   height: 100%;
   padding: 0 45px 0 16px; /* 오른쪽(45px)에 버튼 공간 확보 */
   border-radius: 999px;
@@ -303,7 +312,8 @@ header {
   position: relative;
   max-width: 1400px;
   width: 100%;
-  height: 440px;
+  aspect-ratio: 16 / 9;
+  max-height: 440px;
   margin: 0 auto;
 }
 
@@ -333,9 +343,15 @@ header {
 .hero-overlay {
   position: absolute;
   top: 0;
-  left: -396px;
+  /*left: -396px;
+  width: 420px;*/
+  
+  left: 0;
+  width: 35%;
+  min-width: 280px;
+  max-width: 420px;
+
   height: 100%;
-  width: 420px;
   padding: 48px;
   display: flex;
   flex-direction: column;
@@ -1005,6 +1021,22 @@ header {
 
   .footer {
     padding: 56px 0 0;
+  }
+}
+@media (max-width: 1024px) {
+  .hero-overlay {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .hero-overlay {
+    position: relative;
+    width: 100%;
+    min-width: unset;
+  }
+
+  .hero-inner {
+    aspect-ratio: auto;
   }
 }
 
